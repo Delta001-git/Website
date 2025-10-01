@@ -4,8 +4,8 @@ import Header from "../Component/Header";
 function Tracking() {
   return (
     <>
+    <link rel="icon" type="image/svg+xml" href="/tracking-favicon.png" />
       <Header/>
-
       <div class="tracking-page">
         <div class="order-tracking">
           <a class="back-to-orders-link link-primary" href="orders">

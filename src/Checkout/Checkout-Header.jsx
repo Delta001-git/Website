@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 function CheckoutHeader() {
   return (
     <>
+    <link rel="icon" type="image/svg+xml" href="/cart-favicon.png" />
       <div class="checkout-header">
         <div class="header-content">
           <div class="checkout-header-left-section">
