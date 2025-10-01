@@ -1,4 +1,5 @@
 import './ProductContainer.css'
+import { FormatMoney } from '../utils/formatMoney';
 
 function ProductContainer({Product}) {
   
@@ -24,7 +25,7 @@ function ProductContainer({Product}) {
           <div className="product-rating-count link-primary">{Product.rating.count} </div>
         </div>
 
-        <div className="product-price">{(Product.priceCents / 100).toFixed(2)}</div>
+        <div className="product-price">{FormatMoney(Product.priceCents)}</div>
 
         <div className="product-quantity-container">
           <select>
