@@ -1,6 +1,5 @@
-import React from 'react'
-import { FormatDate } from '../utils/FormatDate';
-import {FormatMoney} from '../utils/formatMoney'
+import { FormatDate } from "../utils/FormatDate";
+import { FormatMoney } from "../utils/formatMoney";
 
 function ProductSummary({cart,deliveryOptions}) {
   return (

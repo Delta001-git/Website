@@ -6,15 +6,14 @@ import { useEffect,useState } from 'react';
 
 function HomePage( {cart}) {
   const [products, setProducts] = useState([])
- 
- 
 
-  useEffect(()=>{
-    axios.get("/api/products")
-  .then((response) => {
-    setProducts(response.data);
-  })
-  },[])
+   useEffect(() => {
+    const getProductsData = async ()=>{
+      const response = await axios.get("/api/products")
+      setProducts(response.data);
+    }
+    getProductsData();
+  }, []);
   
   return (
     <>

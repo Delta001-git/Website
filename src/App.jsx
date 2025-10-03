@@ -9,12 +9,12 @@ import UnAuth from "./Unauth/Unauth.jsx";
 
 function App() {
   const [cart, setCart] = useState([]);
-
-
   useEffect(() => {
-    axios.get("/api/cart-items?expand=product").then((response) => {
+    const getCartData = async ()=>{
+      const response = await axios.get("/api/cart-items?expand=product")
       setCart(response.data);
-    });
+    }
+    getCartData();
   }, []);
 
   return (
