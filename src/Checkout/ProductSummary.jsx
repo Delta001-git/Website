@@ -1,7 +1,8 @@
 import { FormatDate } from "../utils/FormatDate";
 import { FormatMoney } from "../utils/formatMoney";
+import axios from 'axios'
 
-function ProductSummary({cart,deliveryOptions}) {
+function ProductSummary({cart,deliveryOptions,loadCart}) {
   return (
     <>
           <div className="order-summary">
@@ -55,16 +56,24 @@ function ProductSummary({cart,deliveryOptions}) {
                           Choose a delivery option:
                         </div>
                         {deliveryOptions.map((deliveryOption) => {
+
                           let priceString = "FREE Shipping";
                           if (deliveryOption.priceCents > 0) {
                             priceString = `${FormatMoney(
                               deliveryOption.priceCents
                             )}-Shipping`;
                           }
+                           const updateDeliveryOption = async ()=>{
+                              await axios.put(`api/cart-items/${cartItem.productId}`,{
+                                deliveryOptionId : deliveryOption.id
+                              });
+                              loadCart();
+                           }
                           return (
                             <div
                               key={deliveryOption.id}
                               className="delivery-option"
+                              onClick={updateDeliveryOption}
                             >
                               <input
                                 type="radio"
@@ -72,7 +81,7 @@ function ProductSummary({cart,deliveryOptions}) {
                                   deliveryOption.id ===
                                   cartItem.deliveryOptionId
                                 }
-                                readOnly
+                                onChange={()=>{}}
                                 className="delivery-option-input"
                                 name={`delivery-option-1${cartItem.productId}`}
                               />

@@ -1,8 +1,26 @@
 import './ProductContainer.css'
 import { FormatMoney } from '../utils/formatMoney';
+import axios from 'axios'
+import { useState } from 'react';
 
-function ProductContainer({Product}) {
-  
+function 
+
+ProductContainer({Product,loadCart}) {
+  const [quantity,setQuantity] = useState(1);
+  //function to add the item in the cart
+  const handleAddToCart = async ()=>{
+           await axios.post('api/cart-items',{
+              productId:Product.id,
+              quantity
+            })
+            await loadCart();
+          }
+
+  //function to select item quantiy to the cart 
+
+  const selectQuantity = async (e)=>{
+    setQuantity(Number(e.target.value));
+  }
   return (
     <>
       <div className="product-container">
@@ -28,7 +46,7 @@ function ProductContainer({Product}) {
         <div className="product-price">{FormatMoney(Product.priceCents)}</div>
 
         <div className="product-quantity-container">
-          <select>
+          <select value={quantity} onChange={selectQuantity} >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -49,7 +67,10 @@ function ProductContainer({Product}) {
           Added
         </div>
 
-        <button className="add-to-cart-button button-primary">
+        <button 
+          className="add-to-cart-button button-primary"
+          onClick={handleAddToCart}
+        >
           Add to Cart
         </button>
       </div>
