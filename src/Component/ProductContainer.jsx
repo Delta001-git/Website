@@ -7,6 +7,7 @@ function
 
 ProductContainer({Product,loadCart}) {
   const [quantity,setQuantity] = useState(1);
+  const [isAdded,setIsAdded] = useState(false);
   //function to add the item in the cart
   const handleAddToCart = async ()=>{
            await axios.post('api/cart-items',{
@@ -14,6 +15,10 @@ ProductContainer({Product,loadCart}) {
               quantity
             })
             await loadCart();
+            setIsAdded(true);
+            setTimeout(() => {
+              setIsAdded(false)
+            }, 500);
           }
 
   //function to select item quantiy to the cart 
@@ -62,7 +67,11 @@ ProductContainer({Product,loadCart}) {
 
         <div className="product-spacer"></div>
 
-        <div className="added-to-cart">
+        <div 
+        className="added-to-cart"
+        style={{opacity: isAdded ? 1: 0}}
+        
+        >
           <img src="images/icons/checkmark.png" />
           Added
         </div>

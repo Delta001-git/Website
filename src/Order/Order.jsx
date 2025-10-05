@@ -7,7 +7,7 @@ import { FormatDate } from "../utils/FormatDate";
 import { FormatMoney } from "../utils/formatMoney";
 import OrderGrid from "./OrderGrid";
 
-function Order({ cart }) {
+function Order({ cart ,loadCart}) {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     const getOrderData = async ()=>{
@@ -23,7 +23,7 @@ function Order({ cart }) {
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
-        <OrderGrid orders={orders} />
+        <OrderGrid orders={orders} loadCart={loadCart} />
       </div>
     </>
   );
