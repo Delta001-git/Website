@@ -29,9 +29,13 @@ ProductContainer({Product,loadCart}) {
   return (
     <>
       <div className="product-container">
-        <div className="product-image-container">
+        <div 
+        className="product-image-container"
+        
+        >
           <img
             className="product-image"
+            data-testid='product-image'
             src={Product.image}
           />
         </div>
