@@ -32,7 +32,7 @@ function Checkout({ cart ,loadCart}) {
         <div className="page-title">Review your order</div>
         <div className="checkout-grid">
           <ProductSummary cart={cart} deliveryOptions={deliveryOptions} loadCart = {loadCart} />
-          <PaymentSummary paymentSummary={paymentSummary} />
+          <PaymentSummary paymentSummary={paymentSummary} loadCart ={loadCart} />
         </div>
       </div>
     </>
